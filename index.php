@@ -4,7 +4,7 @@
  * VERIFICACION DEL WEBHOOK
 */
 //TOQUEN QUE QUERRAMOS PONER 
-$token = 'pruebaBicho';
+$token = 'HolaBicho';
 //RETO QUE RECIBIREMOS DE FACEBOOK
 $palabraReto = $_GET['hub_challenge'];
 //TOQUEN DE VERIFICACION QUE RECIBIREMOS DE FACEBOOK
@@ -35,8 +35,8 @@ if($mensaje!=null){
     require_once "chatgpt.php";
     $respuesta=preguntaChatgpt($mensaje);
     //ESCRIBIMOS LA RESPUESTA
-    file_put_contents("text.txt", $respuesta);
-    //require_once "envia.php";
+    //file_put_contents("text.txt", $respuesta);
+    require_once "envia.php";
     //ENVIAMOS LA RESPUESTA VIA WHATSAPP
-    //enviar($mensaje,$respuesta,$id,$timestamp,$telefonoCliente);
+    enviar($mensaje,$respuesta,$id,$timestamp,$telefonoCliente);
 }

@@ -1,7 +1,7 @@
 <?php
 function preguntaChatgpt($pregunta){
     // API KEY DE CHATGPT
-    $apiKey = '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';
+    $apiKey = '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';
     
     // INICIAMOS LA CONSULTA DE CURL
     $ch = curl_init();
@@ -48,5 +48,5 @@ function preguntaChatgpt($pregunta){
 }
 
 // EJEMPLO DE USO
-$respuesta = preguntaChatgpt('Cuales son los frameworks de java');
-echo $respuesta;
+//$respuesta = preguntaChatgpt('Cuales son los frameworks de java');
+//echo $respuesta;
