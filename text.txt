@@ -1,3 +1,118 @@
+();
+    }
 
+    public function testContaminationLevelAction()
+    {
+        $this->assertOk();
+    }
 
-Un bicho es un animal pequeño, generalmente insecto. Algunos ejemplos comunes de bichos son hormigas, abejas, cucarachas, moscas, garrapatas y arañas.
+    public function testDevicesAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testGetApiAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testGetAppStoreAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testGetCoordinatesAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testIndexAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testMeasurementAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testNewsAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testNodeMapAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testOverviewAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testOverviewAreaAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testOverviewWorldAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testReportAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testReportSubmitAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testResetPasswordAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testRobotsAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testSearchAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testSitemapAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testSitemapNodeAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testStatisticsAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testVideosAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testWidgetAction()
+    {
+        $this->assertOk();
+    }
+
+    public function testWidgetExtendAction()
+    {
+        $this->assertOk();
+    }
+}

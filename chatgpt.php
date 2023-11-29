@@ -1,7 +1,7 @@
 <?php
 function preguntaChatgpt($pregunta){
     // API KEY DE CHATGPT
-    $apiKey = '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';
+    $apiKey = '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';
     
     // INICIAMOS LA CONSULTA DE CURL
     $ch = curl_init();

@@ -56,15 +56,16 @@ function enviar($recibido, $enviado, $idWA,$timestamp,$telefonoCliente) {
         //CERRAMOS EL CURL
         curl_close($curl);
         //$enviado= trim($enviado,"\n");
-        $enviado=str_replace("\n","",$enviado);
+        $enviado = [];
         //INSERTAMOS LOS REGISTROS DEL ENVIO DEL WHATSAPP
         $sql = "INSERT INTO registro "
             . "(mensaje_recibido    ,mensaje_enviado   ,id_wa        ,timestamp_wa        ,     telefono_wa) VALUES "
             . "('" . $recibido . "' ,'" . $enviado . "','" . $idWA . "','" . $timestamp . "','" . $telefonoCliente . "');";
         $conn->query($sql);
         $conn->close();
+        //Aqui se guarda el mensaje recibido en el .txt
         $archivo = 'mensajes.txt';
-        $nuevoMensaje = "Recibido: $recibido, Enviado: $enviado, ID WA: $idWA, Timestamp: $timestamp, Teléfono: $telefonoCliente\n";
+        $nuevoMensaje = "Recibido: $recibido, ID WA: $idWA, Timestamp: $timestamp, Teléfono: $telefonoCliente\n";
         // Abre el archivo en modo de escritura (si no existe, lo crea)
         $file = fopen($archivo, 'a');
         if ($file) {
