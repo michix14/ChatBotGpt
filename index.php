@@ -32,8 +32,8 @@ $id=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['id'];
 $timestamp=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['timestamp'];
 //SI HAY UN MENSAJE
 if($mensaje!=null){
-    //require_once "chatgpt.php";
-   // $respuesta=preguntaChatgpt($mensaje);
+    require_once "chatgpt.php";
+    $respuesta=preguntaChatgpt($mensaje);
     //ESCRIBIMOS LA RESPUESTA
     //file_put_contents("text.txt", $respuesta);
     require_once "envia.php";

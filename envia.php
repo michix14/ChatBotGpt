@@ -56,7 +56,7 @@ function enviar($recibido, $enviado, $idWA,$timestamp,$telefonoCliente) {
         //CERRAMOS EL CURL
         curl_close($curl);
         //$enviado= trim($enviado,"\n");
-        $enviado = [];
+        $enviado = str_replace("\n","",$enviado);
         //INSERTAMOS LOS REGISTROS DEL ENVIO DEL WHATSAPP
         $sql = "INSERT INTO registro "
             . "(mensaje_recibido    ,mensaje_enviado   ,id_wa        ,timestamp_wa        ,     telefono_wa) VALUES "
