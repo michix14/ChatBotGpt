@@ -23,20 +23,36 @@ $respuesta = file_get_contents("php://input");
 //CONVERTIMOS EL JSON EN ARRAY DE PHP
 $respuesta = json_decode($respuesta, true);
 //EXTRAEMOS EL MENSAJE DEL ARRAY
-$mensaje=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['text']['body'];
+$mensaje = $respuesta['entry'][0]['changes'][0]['value']['messages'][0]['text']['body'];
 //EXTRAEMOS EL TELEFONO DEL ARRAY
-$telefonoCliente=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['from'];
+$telefonoCliente = $respuesta['entry'][0]['changes'][0]['value']['messages'][0]['from'];
 //EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
-$id=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['id'];
+$id = $respuesta['entry'][0]['changes'][0]['value']['messages'][0]['id'];
 //EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
-$timestamp=$respuesta['entry'][0]['changes'][0]['value']['messages'][0]['timestamp'];
+$timestamp = $respuesta['entry'][0]['changes'][0]['value']['messages'][0]['timestamp'];
 //SI HAY UN MENSAJE
-if($mensaje!=null){
+if ($mensaje != null) {
     require_once "chatgpt.php";
-    $respuesta=preguntaChatgpt($mensaje);
+    $respuesta = preguntaChatgpt($mensaje);
     //ESCRIBIMOS LA RESPUESTA
     //file_put_contents("text.txt", $respuesta);
-    require_once "envia.php";
-    //ENVIAMOS LA RESPUESTA VIA WHATSAPP
-    enviar($mensaje,$respuesta,$id,$timestamp,$telefonoCliente);
+    //COMPARA SI HABLA DE PRODUCTO
+    $producto = str_replace("\n", "", $respuesta);
+    if ($producto === 'Producto') {
+        require_once "chatgpt.php";
+        $producto = preguntaProductoChatgpt($mensaje);
+        //ESCRIBIMOS LA RESPUESTA
+        //file_put_contents("text.txt", $respuesta);
+        require_once "enviaProducto.php";
+        //ENVIAMOS LA RESPUESTA VIA WHATSAPP
+        enviarProducto($mensaje, $producto, $id, $timestamp, $telefonoCliente);
+    } else { //ANALIZA LOS SENTIMIENTOS
+        require_once "chatgpt.php";
+        $sentimiento = preguntaSentimientoChatgpt($mensaje);
+        //ESCRIBIMOS LA RESPUESTA
+        //file_put_contents("text.txt", $respuesta);
+        require_once "envia.php";
+        //ENVIAMOS LA RESPUESTA VIA WHATSAPP
+        enviar($mensaje, $sentimiento, $id, $timestamp, $telefonoCliente);
+    }
 }
